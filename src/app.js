@@ -27,7 +27,6 @@ app.post("/repositories", (request, response) => {
 });
 
 app.put("/repositories/:id", (request, response) => {
-  // TODO
 
   const { id } = request.params
   const { title, url, techs } = request.body;
@@ -80,7 +79,9 @@ app.post("/repositories/:id/like", (request, response) => {
 
   repositories[repositoryIndex].likes = repositoryLikes
 
-  return response.status(200).json({ "likes": repositoryLikes})
+  const repository = repositories[repositoryIndex]
+
+  return response.status(200).json(repository)
 
 });
 
